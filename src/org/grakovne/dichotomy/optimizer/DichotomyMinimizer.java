@@ -27,6 +27,7 @@ public class DichotomyMinimizer {
         limits.put("right-limit", this.limits[1]);
 
 
+        double residual;
         do {
             leftX = (limits.get("left-limit") + limits.get("right-limit") - accuracy) / 2.0;
             rightX = (limits.get("left-limit") + limits.get("right-limit") + accuracy) / 2.0;
@@ -40,7 +41,9 @@ public class DichotomyMinimizer {
             if (leftY >= rightY) {
                 limits.put("left-limit", leftX);
             }
-        } while (Math.abs(limits.get("right-limit") - limits.get("left-limit")) > accuracy);
+
+            residual = Math.abs(limits.get("right-limit") - limits.get("left-limit"));
+        } while (residual > accuracy + accuracy / 2 );
 
         double averangeX = Math.abs(limits.get("right-limit") + limits.get("left-limit")) / 2.0;
         limits.put("averange-x", averangeX);

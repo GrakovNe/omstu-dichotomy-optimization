@@ -6,7 +6,7 @@ import org.grakovne.dichotomy.executor.ScriptFunction;
 public class SwannExample {
 
     public static void main(String[] args) throws SwannException {
-        MathFunction function = new ScriptFunction("2 * pow((x), 2) - 12 * x");
+        MathFunction function = new ScriptFunction("pow(x, 2)");
         SwannOptimizer optimizer = new SwannOptimizer(function, 1, 1);
         double[] limits = optimizer.optimize();
 
